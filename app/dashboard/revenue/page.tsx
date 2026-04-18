@@ -2,36 +2,11 @@ import KpiCards from "@/components/dashboard/KpiCards";
 import ClientTable from "@/components/dashboard/ClientTable";
 import RevenueBarChart from "@/components/charts/RevenueBarChart";
 import InvoiceDonutChart from "@/components/charts/InvoiceDonutChart";
-import {
-  fetchClientRows,
-  fetchMonthlyRevenue,
-  fetchDonutData,
-} from "@/lib/data/fetchRevenueData";
-import {
-  mockClientRows,
-  mockMonthlyRevenue,
-  mockDonutData,
-} from "@/lib/data/mockData";
-import type { ClientRow, MonthlyRevenue, DonutSlice } from "@/types";
+import { mockClientRows, mockMonthlyRevenue, mockDonutData } from "@/lib/data/mockData";
 
-export default async function RevenuePage() {
-  let clientRows: ClientRow[] = mockClientRows;
-  let monthlyData: MonthlyRevenue[] = mockMonthlyRevenue;
-  let donutData: DonutSlice[] = mockDonutData;
-
-  try {
-    [clientRows, monthlyData, donutData] = await Promise.all([
-      fetchClientRows(),
-      fetchMonthlyRevenue(),
-      fetchDonutData(),
-    ]);
-  } catch {
-    // Supabase not configured — using mock data
-  }
-
+export default function RevenuePage() {
   return (
     <div className="space-y-6 max-w-[1400px] mx-auto">
-      {/* Page heading */}
       <div>
         <h1
           className="text-2xl font-bold"
@@ -47,21 +22,18 @@ export default async function RevenuePage() {
         </p>
       </div>
 
-      {/* KPI Cards */}
-      <KpiCards rows={clientRows} />
+      <KpiCards rows={mockClientRows} />
 
-      {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <RevenueBarChart data={monthlyData} />
+          <RevenueBarChart data={mockMonthlyRevenue} />
         </div>
         <div>
-          <InvoiceDonutChart data={donutData} />
+          <InvoiceDonutChart data={mockDonutData} />
         </div>
       </div>
 
-      {/* Client Table */}
-      <ClientTable rows={clientRows} />
+      <ClientTable rows={mockClientRows} />
     </div>
   );
 }
