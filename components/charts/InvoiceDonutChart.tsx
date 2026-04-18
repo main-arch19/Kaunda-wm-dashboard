@@ -19,7 +19,7 @@ export default function InvoiceDonutChart({ data }: Props) {
 
   return (
     <div
-      className="bg-white p-6 h-full"
+      className="bg-white p-4 md:p-6 h-full"
       style={{
         borderRadius: "12px",
         boxShadow: "0 4px 20px rgba(10,31,78,0.08)",
@@ -37,7 +37,7 @@ export default function InvoiceDonutChart({ data }: Props) {
       >
         {total} invoices total
       </p>
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer width="100%" height={220}>
         <PieChart>
           <Pie
             data={data}

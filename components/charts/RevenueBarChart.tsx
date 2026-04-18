@@ -24,7 +24,7 @@ function formatK(value: number) {
 export default function RevenueBarChart({ data }: Props) {
   return (
     <div
-      className="bg-white p-6 h-full"
+      className="bg-white p-4 md:p-6 h-full"
       style={{
         borderRadius: "12px",
         boxShadow: "0 4px 20px rgba(10,31,78,0.08)",
@@ -42,7 +42,7 @@ export default function RevenueBarChart({ data }: Props) {
       >
         Last 6 months · ZMW
       </p>
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer width="100%" height={220}>
         <BarChart
           data={data}
           margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
