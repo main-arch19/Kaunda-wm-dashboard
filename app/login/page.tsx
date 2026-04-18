@@ -1,32 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const supabase = createClient();
 
-  async function handleLogin(e: React.FormEvent) {
+  function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      setError(error.message);
-      setLoading(false);
-      return;
-    }
     router.push("/dashboard/revenue");
-    router.refresh();
   }
 
   return (
@@ -74,8 +58,6 @@ export default function LoginPage() {
             <Input
               type="email"
               placeholder="you@kaundawm.co.zm"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
               className="h-11 border-gray-200 focus:border-[#1B5DE5] focus:ring-[#1B5DE5]"
             />
@@ -88,29 +70,20 @@ export default function LoginPage() {
             <Input
               type="password"
               placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
               className="h-11 border-gray-200 focus:border-[#1B5DE5] focus:ring-[#1B5DE5]"
             />
           </div>
 
-          {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-600">
-              {error}
-            </div>
-          )}
-
           <Button
             type="submit"
-            disabled={loading}
             className="w-full h-11 font-semibold rounded-[8px] text-white"
             style={{
-              backgroundColor: loading ? "#0D3A9E" : "#1B5DE5",
+              backgroundColor: "#1B5DE5",
               fontFamily: "var(--font-montserrat)",
             }}
           >
-            {loading ? "Signing in…" : "Sign In"}
+            Sign In
           </Button>
         </form>
 

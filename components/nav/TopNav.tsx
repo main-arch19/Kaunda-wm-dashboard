@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { LogOut, User } from "lucide-react";
 
@@ -11,15 +9,6 @@ interface Props {
 }
 
 export default function TopNav({ userEmail }: Props) {
-  const router = useRouter();
-  const supabase = createClient();
-
-  async function handleLogout() {
-    await supabase.auth.signOut();
-    router.push("/login");
-    router.refresh();
-  }
-
   return (
     <header
       className="h-16 flex items-center justify-between px-6 shrink-0 border-b border-white/10"
@@ -62,7 +51,7 @@ export default function TopNav({ userEmail }: Props) {
         <Button
           variant="ghost"
           size="sm"
-          onClick={handleLogout}
+          onClick={() => {}}
           className="text-white/70 hover:text-[#F0C646] hover:bg-white/10 rounded-full px-3"
         >
           <LogOut size={15} className="mr-1" />
