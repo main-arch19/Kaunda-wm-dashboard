@@ -28,7 +28,7 @@ export default function KpiCards({ rows }: Props) {
       icon: Clock,
       iconBg: "#FEF9C3",
       iconColor: "#854d0e",
-      valueColor: "#854d0e",
+      valueColor: "#D4A82E",
     },
     {
       label: "Collected This Month",
