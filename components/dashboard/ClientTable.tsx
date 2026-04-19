@@ -178,11 +178,7 @@ export default function ClientTable({ rows }: Props) {
 
                   {/* Actions */}
                   <TableCell>
-                    {row.status !== "paid" ? (
-                      <SendReminderButton clientName={row.company_name} invoiceId={row.invoice_id} />
-                    ) : (
-                      <span className="text-xs text-gray-300">—</span>
-                    )}
+                    <SendReminderButton clientName={row.company_name} invoiceId={row.invoice_id} />
                   </TableCell>
                 </TableRow>
               );
