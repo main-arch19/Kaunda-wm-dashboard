@@ -37,16 +37,16 @@ export default function InvoiceDonutChart({ data }: Props) {
       >
         {total} invoices total
       </p>
-      <ResponsiveContainer width="100%" height={220}>
-        <PieChart>
+      <ResponsiveContainer width="100%" height={260}>
+        <PieChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
           <Pie
             data={data}
             dataKey="value"
             nameKey="name"
             cx="50%"
-            cy="45%"
-            innerRadius={65}
-            outerRadius={100}
+            cy="42%"
+            innerRadius={55}
+            outerRadius={85}
             paddingAngle={3}
             strokeWidth={0}
           >

@@ -26,9 +26,9 @@ export default function KpiCards({ rows }: Props) {
       label: "Total Outstanding",
       value: formatCurrency(totalOutstanding),
       icon: Clock,
-      iconBg: "#EBF0FD",
-      iconColor: "#1B5DE5",
-      valueColor: "#1B5DE5",
+      iconBg: "#FEF9C3",
+      iconColor: "#854d0e",
+      valueColor: "#854d0e",
     },
     {
       label: "Collected This Month",
